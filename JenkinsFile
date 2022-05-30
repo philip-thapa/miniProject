@@ -1,1 +1,18 @@
+pipeline {
+    agent any
 
+    stages {
+        stage('Build') {
+            steps {
+                sh 'pip3 install -r hms/requirements.txt'
+                sh 'echo Building'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'python3 hms/manage.py test hms/'
+                sh 'echo Testing by philip'
+            }
+        }
+    }
+}
